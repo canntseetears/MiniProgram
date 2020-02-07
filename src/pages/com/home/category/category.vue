@@ -7,7 +7,7 @@
     </div>
     <homePic></homePic>
     <button :loading="load" class="Catebtn" @click="loadding">加载更多 >>></button>
-    <homeP :imgMsg='pro'></homeP>
+    <homeP></homeP>
   </div>
 </template>
 <script>

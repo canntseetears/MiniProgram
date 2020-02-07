@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class='homeNav'>
-      <div class="homeNavIt1" @click="change(1)" :style="sty1">首页</div>
-      <div class="homeNavIt2" @click="change(2)" :style="sty2">排行</div>
+      <div class="homeNavIt1">首页</div>
+      <div class="homeNavIt2" @click="change">排行</div>
     </div>
   </div>
 </template>
@@ -10,25 +10,16 @@
 export default {
   data() {
     return {
-      show:true,
-      sty1:{'background-color':'#47A3ED'},
-      sty2:{'background-color':'#e7e7e7'}
     }
   },
   methods: {
-    change(i){
-      switch (i) {
-        case 1:
-          this.sty1={'background-color':'#47A3ED'},
-          this.sty2={'background-color':'#e7e7e7'}
-          break;
-        case 2:
-          this.sty1={'background-color':'#e7e7e7'},
-          this.sty2={'background-color':'#47A3ED'}
-          break;
-      }
+    change(){
+      wx.showModal({
+        title:'无权访问！',
+        confirmText:'¿¿¿'
+      })
     }
-  },
+  }
 }
 </script>
 <style>

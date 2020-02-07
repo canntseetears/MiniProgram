@@ -26,13 +26,10 @@ export default {
         },
         success(){
           console.log('success');
-          
         }
       })
-      console.log('dianl');
-      
     }
-  },
+  }
 }
 </script>
 <style scoped>

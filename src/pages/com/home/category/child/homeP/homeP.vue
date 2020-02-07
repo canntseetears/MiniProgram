@@ -2,21 +2,12 @@
   <div>
     <div class="title">
       <h6 class="title-text">
-        <span>{{imgMsg.Pic[1].title}}</span>
+        <span>{{imgMsg.title}}</span>
       </h6>
     </div>
     <div class="homePic">
-      <div class="homePicItem">
-        <img src="https://sooxxx.com/ZData/Preview/SOOXXX.COM 1577808408988.JPEG" alt />
-      </div>
-      <div class="homePicItem">
-        <img src="https://sooxxx.com/ZData/Preview/SOOXXX.COM 1577808408988.JPEG" alt />
-      </div>
-      <div class="homePicItem">
-        <img src="https://sooxxx.com/ZData/Preview/SOOXXX.COM 1577808408988.JPEG" alt />
-      </div>
-      <div class="homePicItem">
-        <img src="https://sooxxx.com/ZData/Preview/SOOXXX.COM 1577808408988.JPEG" alt />
+      <div class="homePicItem" v-for="(it,i) in imgMsg.imgDetail[0].imgUrl" :key="i">
+        <img :src="it" />
       </div>
     </div>
     <button :loading="load" class="Catebtn" @click="loadding">加载更多 >>></button>
@@ -26,13 +17,30 @@
 export default {
   data() {
     return {
-      imgMsg:{}
+      imgMsg:{},
+      load:false
     }
   },
+  /* beforeMount() {
+    wx.request({
+      url:'https://gitee.com/colorss/json/raw/master/commic.json',
+      success(data){
+        this.imgMsg=data.data.Pic[1]
+      },
+      fail(e){
+        console.log('失败');
+      }
+    })
+  } */
   beforeMount() {
     this.$store.dispatch('getPic')
-    this.imgMsg=this.$store.state.listTmp
+    this.imgMsg=this.$store.state.listTmp.Pic[1]
   },
+  methods: {
+    loadding(){
+      this.load=true
+    }
+  }
 };
 </script>
 <style scoped>
