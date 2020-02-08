@@ -5,7 +5,7 @@
       <div class="text">相册</div>
       <div class="collectBox">
         <div class="BoxItem" @click="addBox">新建</div>
-        <div class="BoxItem" v-for="(it,i) in newBox" :key="i">{{it[i]}}</div>
+        <div class="BoxItem" v-for="(it,i) in newBox" :key="i">{{it}}</div>
       </div>
     </div>
     <div class="weui-dialog" v-if="showDia">
@@ -13,11 +13,11 @@
         <strong class="weui-dialog__title">name ¿</strong>
       </div>
       <div class="weui-dialog__bd">
-        <input type="text" placeholder="请输入名称" ref="pixiv" :value="picname"/>
+        <input type="text" placeholder="请输入名称" ref="pixiv" v-model="picname"/>
       </div>
       <div class="weui-dialog__ft">
         <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" @click="add">好了</a>
-        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">不可能</a>
+        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" @click="add">不可能</a>
       </div>
     </div>
   </div>
@@ -36,9 +36,13 @@ export default {
       this.showDia =true;
     },
     add(){
-      /* this.newBox.push(this.$refs.pixiv.value) */
-      this.showDia=false
-      /* console.log(this.newBox); */
+      if(this.picname !== ''){
+        this.newBox.push(this.picname)
+        this.showDia=false
+        this.picname=''
+      }else{
+        this.showDia=false
+      }
     }
   }
 };
