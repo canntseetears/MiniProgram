@@ -3,6 +3,7 @@
 + APP.vue --> script:app.js style:app.wxss
 + app.json --> wx  app.json 
 + main.js
++ wx.success 里头为箭头函数即可this得到组件
 
 
 > A Mpvue project

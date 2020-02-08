@@ -1,53 +1,39 @@
 <template>
   <div>
-    <div class="title">
-      <h6 class="title-text">
-        <span>动漫角色</span>
-      </h6>
-    </div>
-    <homePic></homePic>
-    <button :loading="load" class="Catebtn" @click="loadding">加载更多 >>></button>
-    <homeP></homeP>
+    <homeP v-for="(items,i) in imgMsg" :key="i" :imgmsg="items"></homeP>
   </div>
 </template>
 <script>
-import homePic from './child/homPic/homePic'
-import homeP from './child/homeP/homeP'
-
+import homeP from "./child/homeP/homeP";
+//import {getListPic} from "@/network/homeList";
 export default {
   data() {
     return {
-      load:false,
-      pro:{}
+      load: false,
+      imgMsg:[]
     };
   },
-  props:{
-    /* pro:{
-      type:Object,
-      default(){
-        return {}
+  created() {
+    wx.request({
+      url:'https://gitee.com/colorss/json/raw/master/commic.json',
+      success:data=>{
+        this.imgMsg=data.data
+      },
+      fail(e){
+        console.log('失败');
       }
-    } */
+    })
   },
-  components:{
-    homePic,homeP
+  components: {
+    homeP
   },
   methods: {
-    loadding(){
-      this.load=true
+    loadding() {
+      this.load = true;
     }
   },
-  /* beforeMount() {
-    this.$store.dispatch('getPic')
-    this.pro=this.$store.state.listTmp
-  }, */
   computed: {
-    /* pro(){
-      this.pro=this.$store.state.listTmp
-      console.log(this.pro);
-      
-    } */
-  },
+  }
 };
 </script>
 <style scoped>
@@ -75,6 +61,6 @@ export default {
   right: 2%;
 }
 .Catebtn {
-  width:360px;
+  width: 360px;
 }
 </style>

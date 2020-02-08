@@ -1,5 +1,5 @@
 export default {
-  updateData(state,list) {
-    state.listTmp=list
+  updateData(state,data) {
+    state.Pic=data.data
   }
 }

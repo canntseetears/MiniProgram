@@ -2,11 +2,11 @@
   <div>
     <div class="title">
       <h6 class="title-text">
-        <span>{{imgMsg.title}}</span>
+        <span>{{imgmsg.title}}</span>
       </h6>
     </div>
     <div class="homePic">
-      <div class="homePicItem" v-for="(it,i) in imgMsg.imgDetail[0].imgUrl" :key="i">
+      <div class="homePicItem" v-for="(it,i) in imgmsg.imgDetail[loadMore].imgUrl" :key="i">
         <img :src="it" />
       </div>
     </div>
@@ -15,30 +15,30 @@
 </template>
 <script>
 export default {
+  props: {
+    imgmsg: {}
+  },
+  beforeMount() {
+    //console.log(this.imgmsg);
+  },
   data() {
     return {
-      imgMsg:{},
-      load:false
-    }
+      load: false,
+      loadMore: 0
+    };
   },
+
   /* beforeMount() {
-    wx.request({
-      url:'https://gitee.com/colorss/json/raw/master/commic.json',
-      success(data){
-        this.imgMsg=data.data.Pic[1]
-      },
-      fail(e){
-        console.log('失败');
-      }
-    })
-  } */
-  beforeMount() {
+    
     this.$store.dispatch('getPic')
-    this.imgMsg=this.$store.state.listTmp.Pic[1]
-  },
+    this.imgMsg=this.$store.state.Pic
+    console.log(this.imgMsg);
+    
+  }, */
   methods: {
-    loadding(){
-      this.load=true
+    loadding() {
+      this.load = true;
+      this.loadMore+=1
     }
   }
 };
@@ -68,7 +68,7 @@ export default {
   right: 2%;
 }
 .Catebtn {
-  width:360px;
+  width: 360px;
 }
 .homePic {
   display: flex;

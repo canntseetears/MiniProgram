@@ -34,7 +34,7 @@ export default {
         this.isShow=true
       },
       fail:()=>{
-        console.log('fail');
+        console.log('未授权');
       }
     })
     },

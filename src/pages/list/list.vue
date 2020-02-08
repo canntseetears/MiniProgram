@@ -7,7 +7,7 @@
 </template>
 <script>
 import homeNav from '../com/home/homeNav/homeNav'
-import carousel from '../com/home/carousel/carousel'
+import carousel from '@/pages/com/home/carousel/carousel'
 import category from '../com/home/category/category'
 
 export default {
